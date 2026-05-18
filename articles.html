@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Articles — Majd Ali</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">Majd Ali</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="articles.html" class="active">Articles</a></li>
+      <li><a href="projects.html">Projects</a></li>
+    </ul>
+    <div class="nav-user" id="navUser"></div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <h1>Articles</h1>
+  <p>Thoughts, insights and write-ups on AI, data and engineering.</p>
+</header>
+
+<main class="container">
+  <div id="articlesGrid" class="articles-grid"></div>
+  <div id="emptyArticles" class="empty-state" style="display:none;">
+    <p>No articles published yet. Check back soon.</p>
+  </div>
+</main>
+
+<!-- Article detail modal -->
+<div id="articleModal" class="modal-backdrop" style="display:none;">
+  <div class="modal article-modal">
+    <button class="modal-close" id="closeArticle">&times;</button>
+    <img id="modalImage" class="modal-image" alt="" />
+    <h1 id="modalTitle"></h1>
+    <p class="muted small" id="modalDate"></p>
+    <div id="modalBody" class="article-body"></div>
+
+    <div class="reactions">
+      <button class="react-btn" data-type="like" id="likeBtn">
+        <span class="react-ico">👍</span>
+        <span>Like</span>
+        <span class="react-count" id="likeCount">0</span>
+      </button>
+      <button class="react-btn" data-type="dislike" id="dislikeBtn">
+        <span class="react-ico">👎</span>
+        <span>Dislike</span>
+        <span class="react-count" id="dislikeCount">0</span>
+      </button>
+    </div>
+
+    <section class="comments-section">
+      <h3>Comments</h3>
+      <form id="commentForm" class="comment-form">
+        <p id="commentAs" class="muted small" style="margin:0;"></p>
+        <textarea id="commentText" placeholder="Write a comment..." rows="3" maxlength="800" required></textarea>
+        <button type="submit" class="btn primary" id="commentSubmit">Post comment</button>
+      </form>
+      <div id="commentsList" class="comments-list"></div>
+    </section>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>&copy; <span id="year"></span> <span class="footer-name">Majd Ali</span>. All rights reserved.</p>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/articles.js"></script>
+</body>
+</html>

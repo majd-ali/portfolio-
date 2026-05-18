@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projects — Majd Ali</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">Majd Ali</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+    </ul>
+    <div class="nav-user" id="navUser"></div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <h1>Projects</h1>
+  <p>A selection of AI, ML and engineering projects.</p>
+</header>
+
+<main class="container">
+  <div id="projectsGrid" class="projects-grid"></div>
+  <div id="emptyProjects" class="empty-state" style="display:none;">
+    <p>No projects published yet. Check back soon.</p>
+  </div>
+</main>
+
+<div id="projectModal" class="modal-backdrop" style="display:none;">
+  <div class="modal">
+    <button class="modal-close" id="closeProject">&times;</button>
+    <img id="pmImage" class="modal-image" alt="" />
+    <h1 id="pmTitle"></h1>
+    <p class="muted" id="pmTech"></p>
+    <div id="pmBody" class="article-body"></div>
+    <p id="pmLinkWrap" style="display:none;"><a id="pmLink" target="_blank" rel="noopener" class="btn primary">View project</a></p>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>&copy; <span id="year"></span> <span class="footer-name">Majd Ali</span>. All rights reserved.</p>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/projects.js"></script>
+</body>
+</html>

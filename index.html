@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Majd Ali — Portfolio</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand" id="brandName">Majd Ali</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="projects.html">Projects</a></li>
+    </ul>
+    <div class="nav-user" id="navUser"></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="profile-circle" id="profileCircle">
+    <img id="profileImage" alt="Profile" style="display:none;" />
+    <span id="profileInitials">MA</span>
+  </div>
+  <h1 id="heroName">Majd Ali</h1>
+  <p id="heroTitle">AI Assistant & Team Leader · Data Analyst · AI Specialist</p>
+</header>
+
+<main class="cv">
+  <aside class="cv-sidebar">
+    <section class="card">
+      <h2 id="sideName">Majd Ali</h2>
+      <p class="meta"><strong>Date of birth:</strong> <span id="dob">10/11/2001</span></p>
+      <p class="meta"><strong>Place of birth:</strong> <span id="pob">Latakia, Syria</span></p>
+      <p class="meta"><strong>Nationality:</strong> <span id="nationality">Syrian</span></p>
+    </section>
+
+    <section class="card">
+      <h3 class="section-mini">CONTACT</h3>
+      <p class="meta"><span class="ico">✉</span> <a id="emailLink" href="mailto:amajd8586@gmail.com">amajd8586@gmail.com</a></p>
+      <p class="meta"><span class="ico">☏</span> <span id="phone">(+963) 937824156</span></p>
+    </section>
+
+    <section class="card">
+      <h3 class="section-mini">LANGUAGE SKILLS</h3>
+      <p class="meta"><strong>Mother tongue:</strong> <span id="motherTongue">Arabic</span></p>
+      <div id="languagesList"></div>
+      <p class="muted small">A1/A2: Basic · B1/B2: Independent · C1/C2: Proficient</p>
+    </section>
+
+    <section class="card">
+      <h3 class="section-mini">SKILLS</h3>
+      <div id="skillsList" class="chips"></div>
+    </section>
+  </aside>
+
+  <section class="cv-main">
+    <section>
+      <h2 class="section-title">WORK EXPERIENCE</h2>
+      <div id="experienceList" class="timeline"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title">EDUCATION AND TRAINING</h2>
+      <div id="educationList" class="timeline"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title">PROJECTS</h2>
+      <div id="cvProjectsList" class="timeline"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title">RECOMMENDATIONS</h2>
+      <div id="recommendationsList" class="timeline"></div>
+    </section>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>&copy; <span id="year"></span> <span class="footer-name">Majd Ali</span>. All rights reserved.</p>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>

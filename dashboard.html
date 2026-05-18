@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — Majd Ali</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">Majd Ali</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="projects.html">Projects</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Login -->
+<section id="loginScreen" class="container login-screen">
+  <div class="card login-card">
+    <h2>Admin Login</h2>
+    <p class="muted small">Enter your admin password to manage the website.</p>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Admin email" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <button type="submit" class="btn primary">Sign in</button>
+      <p id="loginError" class="error" style="display:none;"></p>
+    </form>
+    <p class="muted small">Use the admin email and password you created in Firebase Authentication.</p>
+  </div>
+</section>
+
+<!-- Dashboard -->
+<section id="dashboardScreen" class="dashboard" style="display:none;">
+  <aside class="dash-sidebar">
+    <h2>Dashboard</h2>
+    <nav class="dash-nav">
+      <button class="dash-link active" data-tab="profile">Profile & Hero</button>
+      <button class="dash-link" data-tab="experience">Work Experience</button>
+      <button class="dash-link" data-tab="education">Education</button>
+      <button class="dash-link" data-tab="languages">Languages</button>
+      <button class="dash-link" data-tab="skills">Skills</button>
+      <button class="dash-link" data-tab="cvprojects">CV Projects</button>
+      <button class="dash-link" data-tab="recs">Recommendations</button>
+      <button class="dash-link" data-tab="articles">Articles</button>
+      <button class="dash-link" data-tab="projects">Portfolio Projects</button>
+      <button class="dash-link" data-tab="settings">Settings</button>
+    </nav>
+    <button id="logoutBtn" class="btn ghost full">Logout</button>
+  </aside>
+
+  <main class="dash-main">
+    <!-- Profile tab -->
+    <div class="tab" data-tab="profile">
+      <h2>Profile & Hero</h2>
+      <div class="card">
+        <label>Profile image</label>
+        <div class="profile-upload">
+          <div class="profile-circle small">
+            <img id="dashProfileImg" style="display:none;" alt="" />
+            <span id="dashProfileInitials">MA</span>
+          </div>
+          <input type="file" id="profileImageInput" accept="image/*" />
+          <button id="removeProfileImg" class="btn ghost">Remove</button>
+        </div>
+        <p class="muted small">Image is stored locally in your browser.</p>
+      </div>
+
+      <div class="card">
+        <div class="form-grid">
+          <div><label>Full name</label><input id="fName" /></div>
+          <div><label>Title / Tagline</label><input id="fTitle" /></div>
+          <div><label>Date of birth</label><input id="fDob" /></div>
+          <div><label>Place of birth</label><input id="fPob" /></div>
+          <div><label>Nationality</label><input id="fNationality" /></div>
+          <div><label>Email</label><input id="fEmail" /></div>
+          <div><label>Phone</label><input id="fPhone" /></div>
+          <div><label>Mother tongue</label><input id="fMother" /></div>
+        </div>
+        <button id="saveProfileBtn" class="btn primary">Save profile</button>
+      </div>
+    </div>
+
+    <!-- Experience tab -->
+    <div class="tab" data-tab="experience" style="display:none;">
+      <h2>Work Experience</h2>
+      <div class="card">
+        <div class="form-grid">
+          <div><label>Company</label><input id="expCompany" /></div>
+          <div><label>Location</label><input id="expLocation" /></div>
+          <div><label>Role</label><input id="expRole" /></div>
+          <div><label>Period (e.g. 1/1/2026 – Current)</label><input id="expPeriod" /></div>
+        </div>
+        <label>Description (one bullet per line)</label>
+        <textarea id="expDescription" rows="6"></textarea>
+        <div class="row-actions">
+          <button id="addExpBtn" class="btn primary">Add experience</button>
+          <button id="cancelExpBtn" class="btn ghost" style="display:none;">Cancel</button>
+        </div>
+      </div>
+      <div id="expList" class="admin-list"></div>
+    </div>
+
+    <!-- Education tab -->
+    <div class="tab" data-tab="education" style="display:none;">
+      <h2>Education & Training</h2>
+      <div class="card">
+        <div class="form-grid">
+          <div><label>Title</label><input id="eduTitle" /></div>
+          <div><label>Institution</label><input id="eduInstitution" /></div>
+          <div><label>Period</label><input id="eduPeriod" /></div>
+          <div><label>Location</label><input id="eduLocation" /></div>
+        </div>
+        <div class="row-actions">
+          <button id="addEduBtn" class="btn primary">Add education</button>
+          <button id="cancelEduBtn" class="btn ghost" style="display:none;">Cancel</button>
+        </div>
+      </div>
+      <div id="eduList" class="admin-list"></div>
+    </div>
+
+    <!-- Languages tab -->
+    <div class="tab" data-tab="languages" style="display:none;">
+      <h2>Languages</h2>
+      <div class="card">
+        <div class="form-grid">
+          <div><label>Language</label><input id="langName" /></div>
+          <div><label>Listening</label><input id="langListening" /></div>
+          <div><label>Spoken production</label><input id="langSpokenProd" /></div>
+          <div><label>Reading</label><input id="langReading" /></div>
+          <div><label>Spoken interaction</label><input id="langSpokenInter" /></div>
+          <div><label>Writing</label><input id="langWriting" /></div>
+        </div>
+        <div class="row-actions">
+          <button id="addLangBtn" class="btn primary">Add language</button>
+          <button id="cancelLangBtn" class="btn ghost" style="display:none;">Cancel</button>
+        </div>
+      </div>
+      <div id="langList" class="admin-list"></div>
+    </div>
+
+    <!-- Skills tab -->
+    <div class="tab" data-tab="skills" style="display:none;">
+      <h2>Skills</h2>
+      <div class="card">
+        <label>Skills (comma separated)</label>
+        <textarea id="skillsTextarea" rows="5" placeholder="Python, Pandas, TensorFlow, ..."></textarea>
+        <button id="saveSkillsBtn" class="btn primary">Save skills</button>
+      </div>
+    </div>
+
+    <!-- CV Projects tab -->
+    <div class="tab" data-tab="cvprojects" style="display:none;">
+      <h2>CV Projects (text-only, shown on home)</h2>
+      <div class="card">
+        <div class="form-grid">
+          <div><label>Project title</label><input id="cvpTitle" /></div>
+        </div>
+        <label>Description</label>
+        <textarea id="cvpDescription" rows="4"></textarea>
+        <div class="row-actions">
+          <button id="addCvpBtn" class="btn primary">Add CV project</button>
+          <button id="cancelCvpBtn" class="btn ghost" style="display:none;">Cancel</button>
+        </div>
+      </div>
+      <div id="cvpList" class="admin-list"></div>
+    </div>
+
+    <!-- Recommendations tab -->
+    <div class="tab" data-tab="recs" style="display:none;">
+      <h2>Recommendations</h2>
+      <div class="card">
+        <div class="form-grid">
+          <div><label>Name</label><input id="recName" /></div>
+          <div><label>Role / Title</label><input id="recRole" /></div>
+          <div><label>Email</label><input id="recEmail" /></div>
+          <div><label>Phone</label><input id="recPhone" /></div>
+        </div>
+        <label>Description</label>
+        <textarea id="recDesc" rows="3"></textarea>
+        <div class="row-actions">
+          <button id="addRecBtn" class="btn primary">Add recommendation</button>
+          <button id="cancelRecBtn" class="btn ghost" style="display:none;">Cancel</button>
+        </div>
+      </div>
+      <div id="recList" class="admin-list"></div>
+    </div>
+
+    <!-- Articles tab -->
+    <div class="tab" data-tab="articles" style="display:none;">
+      <h2>Articles</h2>
+      <div class="card">
+        <div class="form-grid">
+          <div><label>Title</label><input id="artTitle" /></div>
+          <div><label>Subtitle / one-liner</label><input id="artSubtitle" /></div>
+        </div>
+        <label>Cover image</label>
+        <input type="file" id="artImageInput" accept="image/*" />
+        <img id="artImagePreview" class="thumb-preview" style="display:none;" alt=""/>
+        <label>Body (Markdown-lite; blank line = paragraph)</label>
+        <textarea id="artBody" rows="10"></textarea>
+        <div class="row-actions">
+          <button id="saveArticleBtn" class="btn primary">Publish article</button>
+          <button id="cancelArticleBtn" class="btn ghost" style="display:none;">Cancel</button>
+        </div>
+      </div>
+      <div id="articlesAdminList" class="admin-list"></div>
+    </div>
+
+    <!-- Projects tab -->
+    <div class="tab" data-tab="projects" style="display:none;">
+      <h2>Portfolio Projects</h2>
+      <div class="card">
+        <div class="form-grid">
+          <div><label>Title</label><input id="projTitle" /></div>
+          <div><label>Tech stack (comma separated)</label><input id="projTech" /></div>
+          <div><label>Project link (optional)</label><input id="projLink" placeholder="https://..." /></div>
+        </div>
+        <label>Cover image</label>
+        <input type="file" id="projImageInput" accept="image/*" />
+        <img id="projImagePreview" class="thumb-preview" style="display:none;" alt=""/>
+        <label>Description</label>
+        <textarea id="projDescription" rows="6"></textarea>
+        <div class="row-actions">
+          <button id="saveProjectBtn" class="btn primary">Save project</button>
+          <button id="cancelProjectBtn" class="btn ghost" style="display:none;">Cancel</button>
+        </div>
+      </div>
+      <div id="projectsAdminList" class="admin-list"></div>
+    </div>
+
+    <!-- Settings tab -->
+    <div class="tab" data-tab="settings" style="display:none;">
+      <h2>Settings</h2>
+      <div class="card">
+        <h3>Change password</h3>
+        <input type="password" id="newPassword" placeholder="New password" />
+        <button id="changePasswordBtn" class="btn primary">Update password</button>
+        <p id="pwdMsg" class="muted small"></p>
+      </div>
+      <div class="card">
+        <h3>Backup data</h3>
+        <p class="muted small">Export all content as a JSON file or import a previous backup.</p>
+        <div class="row-actions">
+          <button id="exportBtn" class="btn ghost">Export JSON</button>
+          <label for="importInput" class="btn ghost">Import JSON</label>
+          <input type="file" id="importInput" accept="application/json" style="display:none;" />
+        </div>
+      </div>
+      <div class="card">
+        <h3>Seed defaults</h3>
+        <p class="muted small">If your Firebase project is empty, click this once to publish the default CV content.</p>
+        <button id="seedBtn" class="btn ghost">Publish default CV</button>
+      </div>
+      <div class="card danger">
+        <h3>Reset CV content</h3>
+        <p class="muted small">Overwrite profile/experience/education/etc. with the default CV. Articles and projects are kept.</p>
+        <button id="resetBtn" class="btn danger">Reset CV content</button>
+      </div>
+    </div>
+  </main>
+</section>
+
+<div id="toast" class="toast" style="display:none;"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>
